@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - FMS Banking</title>
+    <!-- Add any additional meta tags, stylesheets, or scripts here -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: 'Libre Baskerville', serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: purple;
+            color: white;
+            display: flex;
+            flex-direction: column; /* Ensure content stacks vertically */
+            align-items: center;
+            min-height: 100vh; /* Ensure the page fills the viewport height */
+            overflow: hidden; /* Remove scroll bars */
+        }
+
+        header {
+            background-color: black;
+            padding: 20px;
+            text-align: left;
+            color: gold;
+            width: 100%;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        main {
+            text-align: center;
+            margin-top: 50px; /* Adjust margin as needed */
+            flex-grow: 1; /* Allow main content to grow */
+        }
+
+        form {
+            background-color: black;
+            color: gold;
+            padding: 20px;
+            width: 300px; /* Adjust the width as needed */
+            border: 2px solid gold;
+            margin: 0 auto; /* Center the form */
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        form input[type="text"],
+        form input[type="password"] {
+            width: calc(100% - 20px); /* Adjust input width */
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 1px solid gold;
+            background-color: black;
+            color: gold;
+        }
+
+        form input[type="submit"] {
+            width: calc(100% - 20px); /* Adjust button width */
+            padding: 10px;
+            background-color: gold;
+            color: black;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Style the signup hyperlink button */
+        main a {
+            color: gold;
+            text-decoration: none;
+        }
+
+        /* Style the signup hyperlink button on hover */
+        main a:hover {
+            color: white;
+        }
+
+        footer {
+            background-color: black;
+            color: gold;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <!-- Your header content goes here -->
+        <h1>Login</h1>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <!-- Your main content goes here -->
+        <form action="/login" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            <input type="submit" value="Login">
+        </form>
+        <!-- Link to sign up page -->
+        <p>Don't have an account? <a href="/signup">Sign up</a></p>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <!-- Your footer content goes here -->
+        <p>&copy; 2024 HandIn YourPockets Inc. All rights reserved.</p>
+    </footer>
+</body>
+</html>

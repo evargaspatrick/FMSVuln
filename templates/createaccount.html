@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Accounts</title>
+    <!-- Add any additional meta tags, stylesheets, or scripts here -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: 'Libre Baskerville', serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: purple;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        header {
+            background-color: black;
+            padding: 20px;
+            text-align: center;
+            color: gold;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: gold;
+        }
+
+        nav ul li a:hover {
+            color: white;
+        }
+
+        main {
+            text-align: center;
+            margin-top: 80px; /* Adjust as needed */
+        }
+
+        section {
+            background-color: black;
+            color: gold;
+            padding: 20px;
+            width: 300px; /* Adjust the width as needed */
+            border: 2px solid gold;
+            margin: auto;
+        }
+
+        table {
+            width: 30%; /* Adjust the width to 70% reduction */
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid gold;
+            padding: 8px;
+        }
+
+        th {
+            background-color: gold;
+            color: black;
+        }
+
+        footer {
+            background-color: black;
+            color: gold;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <!-- Your header content goes here -->
+        <h1>User Accounts</h1>
+        <nav>
+            <ul>
+                <li><a href="/dashboard">Home</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <!-- Your main content goes here -->
+        <section>
+            <h2>User's Accounts</h2>
+            <p>Below are the accounts associated with your user:</p>
+
+            <!-- Display user's associated accounts -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Account ID</th>
+                        <th>Account Name</th>
+                        <th>Account Type</th>
+                        <th>Initial Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for account in accounts %}
+                    <tr>
+                        <td>{{ account.account_id }}</td>
+                        <td>{{ account.account_name }}</td>
+                        <td>{{ account.accountType }}</td>
+                        <td>{{ account.initial_balance }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <!-- Your footer content goes here -->
+        <p>&copy; 2024 HandIn YourPockets Inc. All rights reserved.</p>
+    </footer>
+
+    <!-- Your additional scripts go here -->
+</body>
+</html>

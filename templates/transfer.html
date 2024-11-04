@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer Money</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: 'Libre Baskerville', serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: purple;
+            color: white;
+            display: flex;
+            flex-direction: column; /* Ensure content stacks vertically */
+            align-items: center;
+            min-height: 100vh; /* Ensure the page fills the viewport height */
+            overflow: hidden; /* Remove scroll bars */
+        }
+
+        header {
+            background-color: black;
+            padding: 20px;
+            text-align: center; /* Center align text */
+            color: gold;
+            width: 100%;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: gold;
+        }
+
+        nav ul li a:hover {
+            color: white;
+        }
+
+        main {
+            text-align: center;
+            margin-top: 20px; /* Adjust margin as needed */
+            flex-grow: 1; /* Allow main content to grow */
+        }
+
+        form {
+            background-color: black;
+            color: gold;
+            padding: 20px;
+            width: 300px; /* Adjust the width as needed */
+            border: 2px solid gold;
+            margin: 0 auto; /* Center the form */
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        form input[type="number"] {
+            width: calc(100% - 20px); /* Adjust input width */
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 1px solid gold;
+            background-color: black;
+            color: gold;
+            overflow: hidden; /* Remove scroll bars from input fields */
+        }
+
+        form input[type="submit"] {
+            width: calc(100% - 20px); /* Adjust button width */
+            padding: 10px;
+            background-color: gold;
+            color: black;
+            border: none;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: black;
+            color: gold;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            position: fixed; /* Stick the footer to the bottom */
+            bottom: 0; /* Stick the footer to the bottom */
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <!-- Your header content goes here -->
+        <h1>Transfer Money</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <!-- Your main content goes here -->
+        <form action="/transfer" method="post">
+            <label for="sender_account_id">Sender's Account ID:</label><br>
+            <input type="number" id="sender_account_id" name="sender_account_id" required><br>
+            <label for="recipient_account_id">Recipient's Account ID:</label><br>
+            <input type="number" id="recipient_account_id" name="recipient_account_id" required><br>
+            <label for="amount">Amount to Transfer:</label><br>
+            <input type="number" id="amount" name="amount" min="0" step="0.01" required><br>
+            <input type="submit" value="Transfer">
+        </form>
+
+        <!-- Display error message if exists -->
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <!-- Your footer content goes here -->
+        <div style="background-color: black; color: gold; text-align: center; padding: 10px 0; width: 100%;">
+            <p>&copy; 2024 HandIn YourPockets Inc. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

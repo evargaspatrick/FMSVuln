@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User - {{ user[1] }}</title> <!-- Title will show "Edit User - username" -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Libre Baskerville', serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensures the body takes at least the full height of the viewport */
+        }
+
+        header {
+            background-color: black;
+            padding: 20px;
+            text-align: center;
+            color: gold;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin-right: 20px;
+            position: relative; /* Required for dropdown positioning */
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: gold;
+        }
+
+        header nav ul li a:hover {
+            color: white;
+        }
+
+        /* Dropdown styles */
+        .dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: black;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: gold;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: purple;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block; /* Show dropdown on hover */
+        }
+
+        main {
+            background-color: purple;
+            color: white;
+            padding: 20px;
+            flex: 1; /* Allows main to grow and fill available space */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        main section {
+            max-width: 600px; /* Set a max width for the form section */
+            margin: 0 auto; /* Center the form section */
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            text-align: left; /* Align text to the left */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 12px; /* Increased padding for better spacing */
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Ensures padding is included in the width */
+            outline: none; /* Remove default outline */
+            background-color: white; /* Set background color to white */
+            color: black; /* Set text color to black */
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        select:focus {
+            border-color: gold; /* Highlight border on focus */
+            background-color: white; /* Keep background color white on focus */
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: gold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: black;
+            margin-right: 10px; /* Space between buttons */
+            transition: background-color 0.3s; /* Smooth transition for hover effect */
+        }
+
+        button:hover {
+            background-color: white;
+        }
+
+        footer {
+            background-color: black;
+            color: gold;
+            text-align: center;
+            padding: 10px 0;
+            /* Removed position: fixed to prevent overlap */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Editing: {{ user[1] }}</h1> <!-- Display "Editing: username" -->
+        <nav>
+            <ul>
+                <li><a href="/manage_users">Manage Users</a></li>
+                <li><a href="/view_reports">View Reports</a></li>
+                <li><a href="/admin_settings">Admin Settings</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <section>
+            <h2>Edit User Details</h2>
+            <form action="{{ url_for('update_user', user_id=user[0]) }}" method="POST">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" value="{{ user[1] }}" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="{{ user[2] }}" required>
+
+                <label for="userType">User Type:</label>
+                <select id="userType" name="userType">
+                    <option value="personal" {% if user[3] == 'personal' %}selected{% endif %}>Personal</option>
+                    <option value="business" {% if user[3] == 'business' %}selected{% endif %}>Business</option>
+                </select>
+
+                <label for="password">New Password (leave blank to keep current):</label>
+                <input type="password" id="password" name="password">
+
+                <label for="isAdmin">Admin Status:</label>
+                <input type="checkbox" id="isAdmin" name="isAdmin" {% if user[4] == 1 %}checked{% endif %}>
+                <label for="isAdmin">Check to grant admin privileges</label>
+
+                <button type="submit">Save Changes</button>
+                <button type="button" onclick="window.location.href='/manage_users';">Cancel</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div>
+            <p>&copy; 2024 HandIn YourPockets Inc. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

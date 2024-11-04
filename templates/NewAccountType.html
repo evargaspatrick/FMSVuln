@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Account Type</title>
+    <!-- Add any additional meta tags, stylesheets, or scripts here -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <style>
+        /* Add your CSS styles here */
+        /* Add your CSS styles here */
+        body {
+            font-family: 'Libre Baskerville', serif;
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            overflow: hidden; /* Remove scroll bars */
+        }
+        body {
+            font-family: 'Libre Baskerville', serif;
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+
+        header {
+            background-color: black;
+            padding: 20px;
+            text-align: center;
+            color: gold;
+            width: 100%; /* Set width to 100% */
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: gold;
+        }
+
+        header nav ul li a:hover {
+            color: white;
+        }
+
+        main {
+            background-color: purple;
+            color: white;
+            padding: 20px;
+            min-height: calc(100vh - 140px); /* Height of viewport minus header and footer heights */
+            width: 100%; /* Set width to 100% */
+        }
+
+        main section {
+            text-align: center;
+            margin-top: 50px; /* Adjust as needed for spacing */
+        }
+
+        footer {
+            background-color: black;
+            color: gold;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%; /* Set width to 100% */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <!-- Your header content goes here -->
+        <h1>Create New Account Type</h1>
+        <nav>
+            <ul>
+                <li><a href="/dashboard/{{ user_id }}">Dashboard1</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <!-- Your main content goes here -->
+        <section>
+            <h2>New Account Type</h2>
+            <form action="/create_account" method="post">
+                <label for="accountType">Account Type:</label><br>
+                <input type="radio" id="checking" name="accountType" value="checking" checked>
+                <label for="checking">Checking</label><br>
+                <input type="radio" id="savings" name="accountType" value="savings">
+                <label for="savings">Savings</label><br><br>
+                <label for="initialBalance">Initial Balance:</label><br>
+                <input type="number" id="initialBalance" name="initialBalance" required><br><br>
+                <input type="submit" value="Create Account">
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <!-- Your footer content goes here -->
+        <p>&copy; 2024 HandIn YourPockets Inc. All rights reserved.</p>
+    </footer>
+</body>
+</html>
